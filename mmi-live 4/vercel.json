@@ -1,3 +1,20 @@
 {
-  "version": 2
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/:path*" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin",  "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, OPTIONS" }
+      ]
+    }
+  ],
+  "functions": {
+    "api/insights.js": {
+      "maxDuration": 30
+    }
+  }
 }
